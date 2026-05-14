@@ -4,18 +4,20 @@
 ### Pasos para ejectuar
 
 ```text
-Clonar el repositorio
+**1. Clonar el repositorio**
 git clone <url>
+
 cd preparcial2-joel
 
-Instalar dependencias
+**2. Instalar dependencias**
+
 npm install
 
-Ejecutar
+
+**3. Ejecutar**
 npm run start:dev
 ```
 
-La aplicación corre en `http://localhost:3000`.
 
 ---
 
