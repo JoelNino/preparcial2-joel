@@ -41,7 +41,7 @@ sin exponer ninguna funcionalidad de países hacia afuera.
 Cuando se crea un plan de viaje, se valida el código Alpha-3 del país de la siguiente manera:
 
 
-![Flujo Países](src/images_json/flujo.png)
+<img src="src/images_json/flujo.png" alt="Flujo Países" width="500">
 
 El CountriesModule no expone ningún endpoint HTTP. Solo exporta CountriesService para el uso interno de otros módulos.
 
