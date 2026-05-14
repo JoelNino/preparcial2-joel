@@ -3,18 +3,22 @@
 
 ### Pasos para ejectuar
 
-```text
 **1. Clonar el repositorio**
-git clone <url>
 
+```text
+git clone <url>
 cd preparcial2-joel
+```
 
 **2. Instalar dependencias**
 
+```text
 npm install
-
+```
 
 **3. Ejecutar**
+
+```text
 npm run start:dev
 ```
 
