@@ -152,8 +152,6 @@ DELETE http://localhost:3000/travel-plans/1
 Para limpiar la base de datos se debe eliminar el archivo donde se guarda todo:
 
 ```bash
-# En Windows
 del database.sqlite
-
 ```
 
