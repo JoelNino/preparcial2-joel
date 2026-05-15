@@ -1,4 +1,4 @@
-# Travel Preparcial Joel Niño
+# Travel Parcial Joel Niño
 
 
 ### Pasos para ejectuar
@@ -154,4 +154,21 @@ Para limpiar la base de datos se debe eliminar el archivo donde se guarda todo:
 ```bash
 del database.sqlite
 ```
+
+# Cambios Parcial & Explicación Base De Datos
+
+**Base De Datos**
+
+Para la persistencia de los datos se usó SQLite y TypeORM. Al agregar un gasto a un plan, este no se 
+guarda en una tabla separada sino que se queda almacedano dentro del registro del plan. Acá
+se usa simple-json TypeORM, ya que esto nos permite convertir el arreglo de gastos en un JSON y se almacena en una sola columna, así, cada vez que agreguemos un nuevo gasto, se toma ese arreglo y se añade el objeto, de modo que queda actualizado y no sobreescribe los gastos que ya se hayan guardado. 
+En resumen, cuando se llama al END-POINT encargado de agregar el gasto, primero se busca el plan con su ID en la base de datos, luego se toma el arreglo de expenses de ese plan y se agrega el gasto como se explicó anteriormente y finalmente se guarda todo.
+
+## Cambios realizados con respecto al preparcial
+
+Se creo un módulo de usuarios con su entidad, servicio y controlador. Ahora cada plan de viaje tiene que estar vinculado a un usuario existente, cosa que antes no existía ni siquiera. También, al crear un plan se verifica que el usuario exista en la base de datos y si no existe tira error 404. En travel.entity.ts agreamos userID y el arreglo de Expenses. Y en travel-plans-service modificamos el metodo de create para que se busque el ID del usuario primero.
+
+Se agregó la funcionalidad de añadir gastos a un plan de viaje existente. Cada gasto tiene una descripción, un monto y una categoría (Creamos un nuevo dto llamado create-expense.dto.ts), estos tienen verificaciones como que no pueden ser vacios o que el monto debe ser positivo. Los gastos se guardan dentro del mismo registro del plan sin usar tablas adicionales. En travel-plans.controller agregamos el respectivo END-POINT que llama a addExpense del servicio de travel-plans para realizar lo anterior. 
+
+Y lo último que se hizo fue crear un middleware llamado RegistroMiddleware que intercepta las peticiones a los módulos de viajes y usuarios. Lo que hace esto es que por cada petición imprime en la consola el identificador del usuario tomado del header x-user-id ,la ruta a la que accedió y el método HTTP usado. Si el header no existe se muestra ANONYMOUS.
 

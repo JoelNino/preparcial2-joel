@@ -1,20 +1,28 @@
-import { Module } from '@nestjs/common';
+import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CountriesModule } from './countries/countries.module';
 import { TravelPlansModule } from './travel-plans/travel-plans.module';
-import { Country } from './countries/country.entity';
-import { TravelPlan } from './travel-plans/travel-plan.entity';
+import { UsersModule } from './users/users.module';
+import { RegistroMiddleware } from './middleware/registro.middleware';
+ 
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'sqlite',
-      database: 'database.sqlite',
-      entities: [Country, TravelPlan],
+      database: 'db.sqlite',
+      autoLoadEntities: true,
       synchronize: true,
     }),
     CountriesModule,
     TravelPlansModule,
+    UsersModule,
   ],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer): void {
+    consumer
+      .apply(RegistroMiddleware)
+      .forRoutes('travel-plans', 'users');
+  }
+}

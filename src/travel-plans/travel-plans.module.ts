@@ -4,9 +4,10 @@ import { TravelPlan } from './travel-plan.entity';
 import { TravelPlansService } from './travel-plans.service';
 import { TravelPlansController } from './travel-plans.controller';
 import { CountriesModule } from '../countries/countries.module';
+import { UsersModule } from '../users/users.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([TravelPlan]), CountriesModule],
+  imports: [TypeOrmModule.forFeature([TravelPlan]), CountriesModule, UsersModule],
   providers: [TravelPlansService],
   controllers: [TravelPlansController],
 })

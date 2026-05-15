@@ -1,5 +1,11 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
+export interface Expense {
+  description: string;
+  amount: number;
+  category: string;
+}
+
 @Entity()
 export class TravelPlan {
   @PrimaryGeneratedColumn()
@@ -16,4 +22,10 @@ export class TravelPlan {
 
   @Column()
   countryCode!: string;
+
+  @Column()
+  userId!: number;
+
+  @Column({ type: 'simple-json', default: '[]' })
+  expenses!: Expense[];
 }
