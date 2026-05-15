@@ -1,5 +1,7 @@
 # Travel Parcial Joel Niño
 
+**La primera parte del readme corresponde a lo pedido en el preparcial, más adelante está la explicación correspondiente
+a lo realizado en el parcial**
 
 ### Pasos para ejectuar
 
