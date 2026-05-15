@@ -172,3 +172,6 @@ Se agregó la funcionalidad de añadir gastos a un plan de viaje existente. Cada
 
 Y lo último que se hizo fue crear un middleware llamado RegistroMiddleware que intercepta las peticiones a los módulos de viajes y usuarios. Lo que hace esto es que por cada petición imprime en la consola el identificador del usuario tomado del header x-user-id ,la ruta a la que accedió y el método HTTP usado. Si el header no existe se muestra ANONYMOUS.
 
+**Ejemplo Middleware**
+
+![Headers](src/images_json/MIDDLEWARE.png)
